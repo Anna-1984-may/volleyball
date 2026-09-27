@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500;1,600;1,800;1,900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>*,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:#0A1E4B;font-family:'Montserrat',system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#E71E2B;text-decoration:none}a:hover{color:#C4141F}input{font-family:inherit}input::placeholder{color:#6B7490}input:focus{outline:none;border-color:#0A1E4B !important}</style>
+</helmet>
+
+<div style="min-width:1280px;background:#fff;font-family:'Montserrat',sans-serif;color:#0A1E4B;overflow-x:clip;padding:16px 0 0">
+
+<header data-screen-label="00 Шапка" style="position:sticky;top:16px;z-index:60;width:1200px;margin:0 auto;height:72px;background:#fff;border-radius:999px;display:flex;align-items:center;gap:32px;padding:0 12px 0 28px;box-shadow:0 10px 30px rgba(10,30,75,.12)">
+    <a href="{{ homeHref }}" style="display:flex;flex:none"><img src="logo-horizontal.png" alt="Звонкий мяч" style="height:38px;display:block"></a>
+    <nav style="display:flex;gap:22px;flex:1;justify-content:center">
+      <sc-for list="{{ menu }}" as="m" hint-placeholder-count="5"><a href="{{ m.href }}" style="font:700 13px/1.2 'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:.03em;color:{{ m.color }};white-space:nowrap" style-hover="color:#E71E2B">{{ m.t }}</a></sc-for>
+    </nav>
+    <a href="tel:+73812000000" style="font:800 15px/1.2 'Montserrat',sans-serif;color:#0A1E4B;flex:none;white-space:nowrap;display:flex;align-items:center;gap:8px"><span style="display:inline-block;width:16px;height:16px;flex:none;vertical-align:-3px;background:currentColor;-webkit-mask:url(icon-phone-bold.svg) center/contain no-repeat;mask:url(icon-phone-bold.svg) center/contain no-repeat;"></span>+7 (3812) 00-00-00</a>
+    <div onClick="{{ open }}" style="height:50px;padding:0 24px;border-radius:999px;background:#E71E2B;color:#fff;display:flex;align-items:center;font:800 14px 'Montserrat',sans-serif;cursor:pointer;flex:none;white-space:nowrap" style-hover="background:#0A1E4B">Записаться</div>
+  </header>
+<section data-screen-label="01 Заголовок" style="position:relative;margin:-88px 16px 0;border-radius:40px;background:#EEF2FA;padding:92px 0 56px">
+  
+  <div style="max-width:1200px;margin:0 auto;padding-top:56px">
+    <div style="display:flex;gap:10px;font:600 14px 'Montserrat',sans-serif;color:#48536F"><a href="{{ homeHref }}" style="color:#48536F" style-hover="color:#E71E2B">Главная</a><div>/</div><div style="color:#0A1E4B">Родителям</div></div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-top:20px">
+      <h1 style="margin:0;font:900 80px/.98 'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:-.03em">Всё, что<br>нужно <span style="display:inline-block;background:#E71E2B;color:#fff;border-radius:26px;padding:0 24px 8px;transform:rotate(-2deg)">знать</span></h1>
+      <div style="font:500 17px/1.55 'Montserrat',sans-serif;color:#48536F;max-width:420px;text-wrap:pretty">Как проходит первое занятие, что взять с&nbsp;собой, как мы следим за&nbsp;безопасностью и&nbsp;какие документы понадобятся. Если чего-то не&nbsp;нашли — позвоните или напишите, ответим.</div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:40px">
+      <sc-for list="{{ toc }}" as="t" hint-placeholder-count="6">
+        <a href="{{ t.href }}" style="height:46px;padding:0 22px;border-radius:999px;background:#fff;color:#0A1E4B;display:flex;align-items:center;font:800 14px 'Montserrat',sans-serif;white-space:nowrap" style-hover="background:#0A1E4B;color:#fff">{{ t.t }}</a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="first" data-screen-label="02 Первое занятие" style="padding:72px 0">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 style="margin:0 0 36px;font:900 52px/1.02 'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:-.02em">Как проходит <span style="display:inline-block;background:#0A1E4B;color:#fff;border-radius:20px;padding:0 18px 6px;transform:rotate(-2deg)">первое</span> занятие</h2>
+    <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px">
+      <sc-for list="{{ firstSteps }}" as="s" hint-placeholder-count="5">
+        <div style="position:relative;background:#EEF2FA;border-radius:28px;padding:84px 22px 26px;display:flex;flex-direction:column;gap:8px;min-height:260px">
+          <div style="position:absolute;top:0;right:0;width:60px;height:60px;border-radius:0 28px 0 24px;background:{{ s.bg }};color:#fff;display:flex;align-items:center;justify-content:center;font:900 22px 'Montserrat',sans-serif">{{ s.n }}</div>
+          <div style="font:900 22px/1.1 'Montserrat',sans-serif;color:#E71E2B">{{ s.k }}</div>
+          <div style="font:800 16px/1.3 'Montserrat',sans-serif">{{ s.t }}</div>
+          <div style="font:500 14px/1.5 'Montserrat',sans-serif;color:#48536F">{{ s.d }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+      <div style="margin-top:16px;font:italic 500 13px 'Montserrat',sans-serif;color:#E71E2B">Нужно от школы: за сколько минут приходить, кто встречает, длительность пробного</div>
+    </sc-if>
+  </div>
+</section>
+
+<section id="bring" data-screen-label="03 Что взять" style="margin:0 16px;border-radius:40px;background:#E71E2B;padding:72px 0;position:relative;overflow:hidden">
+  <img src="circle-stripes.png" alt="" style="position:absolute;width:420px;right:-120px;bottom:-160px;opacity:.5;pointer-events:none">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px;align-items:center;position:relative">
+    <div style="grid-column:span 4;display:flex;flex-direction:column;gap:16px">
+      <h2 style="margin:0;font:900 52px/1.02 'Montserrat',sans-serif;color:#fff;text-transform:uppercase;letter-spacing:-.02em">Что взять с&nbsp;собой</h2>
+      <div style="font:600 16px/1.55 'Montserrat',sans-serif;color:#fff">Специальная форма на&nbsp;первое занятие не&nbsp;нужна — подойдёт обычная спортивная одежда</div>
+    </div>
+    <div style="grid-column:6 / span 7;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
+      <sc-for list="{{ bring }}" as="b" hint-placeholder-count="6">
+        <div style="background:#fff;border-radius:24px;padding:22px 22px 20px;display:flex;flex-direction:column;gap:6px;transform:rotate({{ b.rot }})">
+          <div style="width:40px;height:40px;border-radius:50%;background:#EEF2FA;color:#E71E2B;display:flex;align-items:center;justify-content:center;font:900 16px 'Montserrat',sans-serif"><span style="display:block;width:20px;height:20px;flex:none;background:#E71E2B;-webkit-mask:url({{ b.icon }}) center/contain no-repeat;mask:url({{ b.icon }}) center/contain no-repeat"></span></div>
+          <div style="font:800 16px/1.3 'Montserrat',sans-serif;margin-top:6px">{{ b.t }}</div>
+          <div style="font:500 13px/1.45 'Montserrat',sans-serif;color:#48536F">{{ b.d }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="safety" data-screen-label="04 Безопасность" style="padding:72px 0">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px;align-items:stretch">
+    <div style="grid-column:span 5;position:relative;border-radius:32px;overflow:hidden;background:#DCE4F4;min-height:460px">
+      <image-slot id="parents-safety" shape="rect" placeholder="Фото: разминка с тренером"></image-slot>
+    </div>
+    <div style="grid-column:7 / span 6;display:flex;flex-direction:column;gap:18px;justify-content:center">
+      <h2 style="margin:0;font:900 52px/1.02 'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:-.02em">Тренировка и&nbsp;<span style="display:inline-block;background:#E71E2B;color:#fff;border-radius:20px;padding:0 18px 6px;transform:rotate(-2deg)">безопасность</span></h2>
+      <div style="font:500 16px/1.6 'Montserrat',sans-serif;color:#48536F">Волейбол — бесконтактный спорт, но&nbsp;мы всё равно внимательно следим за&nbsp;нагрузкой</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <sc-for list="{{ safety }}" as="s" hint-placeholder-count="3">
+          <div style="background:#EEF2FA;border-radius:24px;padding:20px 24px;display:flex;gap:16px;align-items:flex-start">
+            <div style="width:36px;height:36px;border-radius:50%;background:#0A1E4B;color:#fff;display:flex;align-items:center;justify-content:center;font:900 15px 'Montserrat',sans-serif;flex:none"><span style="display:block;width:18px;height:18px;flex:none;background:#fff;-webkit-mask:url({{ s.icon }}) center/contain no-repeat;mask:url({{ s.icon }}) center/contain no-repeat"></span></div>
+            <div style="display:flex;flex-direction:column;gap:4px"><div style="font:800 16px/1.3 'Montserrat',sans-serif">{{ s.t }}</div><div style="font:500 14px/1.5 'Montserrat',sans-serif;color:#48536F">{{ s.d }}</div></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="approach" data-screen-label="05 Подход" style="margin:0 16px;border-radius:40px;background:#0A1E4B;padding:72px 0;position:relative;overflow:hidden">
+  <img src="sign-stripes.png" alt="" style="position:absolute;width:520px;right:-120px;top:-120px;opacity:.6;pointer-events:none">
+  <div style="max-width:1200px;margin:0 auto;position:relative">
+    <h2 style="margin:0 0 36px;font:900 52px/1.02 'Montserrat',sans-serif;color:#fff;text-transform:uppercase;letter-spacing:-.02em;max-width:760px">Развивать, а&nbsp;не&nbsp;давить</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px">
+      <sc-for list="{{ approach }}" as="a" hint-placeholder-count="3">
+        <div style="background:#fff;border-radius:28px;padding:32px 28px;display:flex;flex-direction:column;gap:12px">
+          <div style="font:900 20px/1.2 'Montserrat',sans-serif;text-transform:uppercase">{{ a.t }}</div>
+          <div style="font:500 15px/1.6 'Montserrat',sans-serif;color:#48536F">{{ a.d }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="faq" data-screen-label="06 Вопросы" style="padding:72px 0">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px">
+    <div style="grid-column:span 4;display:flex;flex-direction:column;gap:20px;align-items:flex-start">
+      <h2 style="margin:0;font:900 52px/1.02 'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:-.02em">Частые вопросы</h2>
+      <div style="font:500 15px/1.55 'Montserrat',sans-serif;color:#48536F">Не нашли ответ? Напишите нам — ответим в&nbsp;течение дня.</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <sc-for list="{{ messengers }}" as="m" hint-placeholder-count="3"><a aria-disabled="true" style="pointer-events:none;cursor:default;height:44px;padding:0 20px;border-radius:999px;background:#EEF2FA;color:#0A1E4B;display:flex;align-items:center;font:800 14px 'Montserrat',sans-serif;gap:8px" style-hover="background:#0A1E4B;color:#fff"><span style="display:block;width:16px;height:16px;flex:none;background:currentColor;-webkit-mask:url({{ m.icon }}) center/contain no-repeat;mask:url({{ m.icon }}) center/contain no-repeat"></span>{{ m.t }}</a></sc-for>
+      </div>
+    </div>
+    <div style="grid-column:6 / span 7;display:flex;flex-direction:column;gap:10px">
+      <sc-for list="{{ faq }}" as="q" hint-placeholder-count="8">
+        <div style="background:{{ q.rowBg }};border-radius:28px">
+          <div onClick="{{ q.toggle }}" style="display:flex;justify-content:space-between;align-items:center;gap:24px;padding:20px 20px 20px 28px;cursor:pointer">
+            <div style="font:800 17px/1.35 'Montserrat',sans-serif;color:{{ q.fg }}">{{ q.q }}</div>
+            <div style="width:42px;height:42px;border-radius:50%;background:#E71E2B;color:#fff;flex:none;display:flex;align-items:center;justify-content:center;font:600 22px/1 'Montserrat',sans-serif"><span style="display:block;width:20px;height:20px;flex:none;background:#fff;-webkit-mask:url({{ q.icon }}) center/contain no-repeat;mask:url({{ q.icon }}) center/contain no-repeat"></span></div>
+          </div>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 28px 26px;font:500 15px/1.6 'Montserrat',sans-serif;color:#fff;max-width:600px">Ответ от&nbsp;школы. Нужно от&nbsp;школы: выгрузка вопросов с&nbsp;реальных звонков.</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="docs" data-screen-label="07 Документы" style="margin:0 16px;border-radius:40px;background:#EEF2FA;padding:72px 0">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 style="margin:0 0 36px;font:900 52px/1.02 'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:-.02em">Документы</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px">
+      <sc-for list="{{ docs }}" as="g" hint-placeholder-count="3">
+        <div style="background:#fff;border-radius:32px;padding:30px 28px;display:flex;flex-direction:column;gap:14px">
+          <div style="font:900 20px/1.2 'Montserrat',sans-serif;text-transform:uppercase">{{ g.t }}</div>
+          <div style="font:500 14px/1.5 'Montserrat',sans-serif;color:#48536F">{{ g.d }}</div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px">
+            <sc-for list="{{ g.items }}" as="i" hint-placeholder-count="3">
+              <a href="#" style="display:flex;justify-content:space-between;align-items:center;gap:12px;background:#EEF2FA;border-radius:18px;padding:14px 16px;color:#0A1E4B" style-hover="background:#DCE4F4;color:#0A1E4B">
+                <div style="font:700 14px/1.35 'Montserrat',sans-serif">{{ i }}</div>
+                <div style="height:28px;padding:0 10px;border-radius:999px;background:#fff;color:#E71E2B;display:flex;align-items:center;font:800 11px 'Montserrat',sans-serif;flex:none">PDF<span style="display:inline-block;width:13px;height:13px;flex:none;vertical-align:-3px;background:currentColor;-webkit-mask:url(icon-download.svg) center/contain no-repeat;mask:url(icon-download.svg) center/contain no-repeat;margin-left:4px"></span></div>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+      <div style="margin-top:16px;font:italic 500 13px 'Montserrat',sans-serif;color:#E71E2B">Нужно от школы: файлы документов и требования к справке</div>
+    </sc-if>
+  </div>
+</section>
+
+<section data-screen-label="08 Блок записи" style="padding:72px 0">
+  <div style="max-width:1200px;margin:0 auto;background:#E71E2B;border-radius:40px;padding:56px;display:flex;justify-content:space-between;align-items:center;gap:40px;position:relative;overflow:hidden">
+    <img src="circle-stripes.png" alt="" style="position:absolute;width:320px;right:-80px;top:-120px;opacity:.5;pointer-events:none">
+    <div style="display:flex;flex-direction:column;gap:14px;max-width:680px;position:relative">
+      <h2 style="margin:0;font:900 44px/1.05 'Montserrat',sans-serif;color:#fff;text-transform:uppercase;letter-spacing:-.02em">Готовы попробовать?</h2>
+      <div style="font:600 17px/1.5 'Montserrat',sans-serif;color:#fff">Первое занятие бесплатно. Перезвоним в&nbsp;течение дня и&nbsp;подберём группу рядом с&nbsp;домом.</div>
+    </div>
+    <div onClick="{{ open }}" style="height:64px;padding:0 38px;border-radius:999px;background:#fff;color:#E71E2B;display:flex;align-items:center;font:800 17px 'Montserrat',sans-serif;cursor:pointer;flex:none;position:relative" style-hover="background:#0A1E4B;color:#fff">Записаться на пробное</div>
+  </div>
+</section>
+
+<footer id="contacts" data-screen-label="09 Подвал" style="padding:24px 0 36px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px">
+      <a href="{{ homeHref }}" style="grid-column:span 3"><img src="logo-block.png" alt="Звонкий мяч — детская спортивная школа" style="width:180px"></a>
+      <div style="grid-column:5 / span 2;display:flex;flex-direction:column;gap:12px">
+        <div style="font:900 13px 'Montserrat',sans-serif;color:#E71E2B;margin-bottom:6px;text-transform:uppercase">Разделы</div>
+        <sc-for list="{{ menu }}" as="m" hint-placeholder-count="5"><a href="{{ m.href }}" style="font:600 14px/1.3 'Montserrat',sans-serif;color:#0A1E4B" style-hover="color:#E71E2B">{{ m.t }}</a></sc-for>
+      </div>
+      <div style="grid-column:span 3;display:flex;flex-direction:column;gap:12px">
+        <div style="font:900 13px 'Montserrat',sans-serif;color:#E71E2B;margin-bottom:6px;text-transform:uppercase">Залы</div>
+        <sc-for list="{{ halls }}" as="h" hint-placeholder-count="5"><a href="{{ h.href }}" style="font:600 14px/1.3 'Montserrat',sans-serif;color:#0A1E4B;display:flex;align-items:center;gap:8px" style-hover="color:#E71E2B"><span style="display:inline-block;width:14px;height:14px;flex:none;vertical-align:-3px;background:currentColor;-webkit-mask:url(icon-map-pin.svg) center/contain no-repeat;mask:url(icon-map-pin.svg) center/contain no-repeat;"></span>{{ h.name }} · {{ h.addr }}</a></sc-for>
+      </div>
+      <div style="grid-column:span 3;display:flex;flex-direction:column;gap:12px">
+        <div style="font:900 13px 'Montserrat',sans-serif;color:#E71E2B;margin-bottom:6px;text-transform:uppercase">Контакты</div>
+        <a href="tel:+73812000000" style="font:700 20px/1.3 'Montserrat',sans-serif;color:#0A1E4B;display:flex;align-items:center;gap:10px"><span style="display:inline-block;width:18px;height:18px;flex:none;vertical-align:-3px;background:currentColor;-webkit-mask:url(icon-phone-bold.svg) center/contain no-repeat;mask:url(icon-phone-bold.svg) center/contain no-repeat;"></span>+7 (3812) 00-00-00</a>
+        <a href="mailto:info@zvonkiy-myach.ru" style="font:600 14px/1.3 'Montserrat',sans-serif;color:#0A1E4B;display:flex;align-items:center;gap:10px"><span style="display:inline-block;width:16px;height:16px;flex:none;vertical-align:-3px;background:currentColor;-webkit-mask:url(icon-mail.svg) center/contain no-repeat;mask:url(icon-mail.svg) center/contain no-repeat;"></span>info@zvonkiy-myach.ru</a>
+        <div style="font:500 14px/1.3 'Montserrat',sans-serif;color:#48536F;display:flex;align-items:center;gap:10px"><span style="display:inline-block;width:16px;height:16px;flex:none;vertical-align:-3px;background:currentColor;-webkit-mask:url(icon-clock.svg) center/contain no-repeat;mask:url(icon-clock.svg) center/contain no-repeat;"></span>Пн–Сб, 09:00–20:00</div>
+      </div>
+    </div>
+    <div style="border-top:1px solid #DCE4F4;margin-top:56px;padding-top:24px;display:flex;justify-content:space-between;gap:24px;font:500 12px/1.5 'Montserrat',sans-serif;color:#48536F">
+      <div>АНО «Звонкий мяч» · ИНН 0000000000 · ОГРН 0000000000000 · г. Омск</div>
+      <div style="display:flex;gap:24px"><a href="#" style="color:#48536F">Политика обработки данных</a><a href="#" style="color:#48536F">Публичная оферта</a></div>
+    </div>
+  </div>
+</footer>
+
+<sc-if value="{{ modal }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ close }}" style="position:fixed;inset:0;z-index:300;background:rgba(10,30,75,.75);display:flex;align-items:center;justify-content:center;padding:40px">
+    <div onClick="{{ stop }}" style="width:540px;background:#fff;border-radius:36px;padding:44px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px">
+        <div style="font:900 28px/1.1 'Montserrat',sans-serif;text-transform:uppercase">Запись на<br><span style="display:inline-block;background:#E71E2B;color:#fff;border-radius:14px;padding:0 12px 4px;margin-top:4px;transform:rotate(-2deg)">пробное</span></div>
+        <div onClick="{{ close }}" style="width:44px;height:44px;border-radius:50%;background:#EEF2FA;flex:none;display:flex;align-items:center;justify-content:center;font:500 24px/1 'Montserrat',sans-serif;cursor:pointer" style-hover="background:#DCE4F4"><span style="display:inline-block;width:20px;height:20px;flex:none;vertical-align:-3px;background:currentColor;-webkit-mask:url(icon-x.svg) center/contain no-repeat;mask:url(icon-x.svg) center/contain no-repeat;"></span></div>
+      </div>
+      <sc-if value="{{ fm.notSent }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:24px">
+          <input value="{{ fm.name }}" onChange="{{ fm.onName }}" placeholder="Имя родителя" style="height:58px;border:2px solid {{ fm.nameBc }};border-radius:999px;padding:0 24px;font:600 16px 'Montserrat',sans-serif;color:#0A1E4B;background:#fff">
+          <input value="{{ fm.phone }}" onChange="{{ fm.onPhone }}" placeholder="Телефон" style="height:58px;border:2px solid {{ fm.phoneBc }};border-radius:999px;padding:0 24px;font:600 16px 'Montserrat',sans-serif;color:#0A1E4B;background:#fff">
+          <input value="{{ fm.age }}" onChange="{{ fm.onAge }}" placeholder="Возраст ребёнка" style="height:58px;border:2px solid {{ fm.ageBc }};border-radius:999px;padding:0 24px;font:600 16px 'Montserrat',sans-serif;color:#0A1E4B;background:#fff">
+          <div onClick="{{ fm.toggleConsent }}" style="display:flex;gap:12px;align-items:flex-start;cursor:pointer;margin-top:4px">
+            <div style="width:22px;height:22px;flex:none;border-radius:6px;border:2px solid {{ fm.consentBc }};background:{{ fm.consentBg }};color:#fff;display:flex;align-items:center;justify-content:center;font:700 13px 'Montserrat',sans-serif">{{ fm.check }}</div>
+            <div style="font:500 13px/1.5 'Montserrat',sans-serif;color:#48536F">Согласен на&nbsp;обработку <a href="#">персональных данных</a></div>
+          </div>
+          <sc-if value="{{ fm.showError }}" hint-placeholder-val="{{ false }}"><div style="font:600 13px 'Montserrat',sans-serif;color:#E71E2B">Заполните отмеченные поля</div></sc-if>
+          <div onClick="{{ fm.submit }}" style="height:62px;margin-top:6px;border-radius:999px;background:#E71E2B;color:#fff;display:flex;align-items:center;justify-content:center;font:800 17px 'Montserrat',sans-serif;cursor:pointer" style-hover="background:#0A1E4B">Отправить заявку</div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ fm.sent }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:14px;padding:28px 0 8px;align-items:flex-start">
+          <img src="sign.png" alt="" style="width:72px;height:72px">
+          <div style="font:900 26px/1.15 'Montserrat',sans-serif;text-transform:uppercase">Заявка отправлена</div>
+          <div style="font:500 15px/1.5 'Montserrat',sans-serif;color:#48536F">Администратор перезвонит и&nbsp;подберёт группу и&nbsp;зал</div>
+          <div onClick="{{ close }}" style="height:54px;padding:0 30px;margin-top:8px;border-radius:999px;background:#0A1E4B;color:#fff;display:flex;align-items:center;font:700 15px 'Montserrat',sans-serif;cursor:pointer">Хорошо</div>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showNotes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Макет&quot;}}">
+const blankForm = () => ({ name: '', phone: '', age: '', consent: false, tried: false, sent: false });
+const HOME = 'index.html', TR = 'trainers.html', SCH = 'schedule.html', PR = 'price.html', PA = 'parents.html';
+const NB = '\u00A0';
+const HALLS = [
+  { id: 1, name: 'Центральный', addr: 'ул. Примерная, 1' }, { id: 2, name: 'Кировский', addr: 'ул. Примерная, 2' },
+  { id: 3, name: 'Советский', addr: 'ул. Примерная, 3' }, { id: 4, name: 'Октябрьский', addr: 'ул. Примерная, 4' },
+  { id: 5, name: 'Ленинский', addr: 'ул. Примерная, 5' }
+];
+const FAQ = [
+  'Возьмут ли ребёнка без подготовки?', 'С какого возраста можно заниматься?', 'Нужна ли справка от врача?',
+  'Можно ли родителям смотреть тренировку?', 'Что делать, если ребёнок заболел?', 'Как перейти в другую группу или зал?',
+  'Участвуют ли дети в соревнованиях?', 'Как оплатить абонемент?'
+];
+
+class Component extends DCLogic {
+  state = { modal: false, faqOpen: 0, form: blankForm() };
+
+  componentDidMount() {
+    this.onKey = e => { if (e.key === 'Escape') this.closeModal(); };
+    window.addEventListener('keydown', this.onKey);
+  }
+  componentWillUnmount() { window.removeEventListener('keydown', this.onKey); }
+
+  closeModal = () => this.setState({ modal: false, form: blankForm() });
+
+  form() {
+    const f = this.state.form;
+    const set = patch => this.setState(s => ({ form: { ...s.form, ...patch } }));
+    const ok = f.name.trim() && f.phone.trim() && f.age.trim() && f.consent;
+    const bc = v => (f.tried && !v ? '#E71E2B' : '#DCE4F4');
+    return { ...f, notSent: !f.sent, showError: f.tried && !ok,
+      nameBc: bc(f.name.trim()), phoneBc: bc(f.phone.trim()), ageBc: bc(f.age.trim()),
+      consentBc: f.consent || f.tried ? '#E71E2B' : '#6B7490', consentBg: f.consent ? '#E71E2B' : '#fff', check: f.consent ? '✓' : '',
+      onName: e => set({ name: e.target.value }), onPhone: e => set({ phone: e.target.value }), onAge: e => set({ age: e.target.value }),
+      toggleConsent: () => set({ consent: !f.consent }), submit: () => (ok ? set({ sent: true }) : set({ tried: true })) };
+  }
+
+  renderVals() {
+    return {
+      showNotes: this.props.showNotes ?? true,
+      homeHref: HOME,
+      menu: [
+        { t: 'Расписание и залы', href: SCH, color: '#0A1E4B' }, { t: 'Тренеры', href: TR, color: '#0A1E4B' },
+        { t: 'Стоимость', href: PR, color: '#0A1E4B' }, { t: 'Родителям', href: PA, color: '#E71E2B' },
+        { t: 'Контакты', href: '#contacts', color: '#0A1E4B' }
+      ],
+      messengers: [{ t: 'Telegram', href: 'https://t.me/', icon: 'icon-brand-telegram.svg' }, { t: 'WhatsApp', href: 'https://wa.me/', icon: 'icon-brand-whatsapp.svg' }, { t: 'VK', href: 'https://vk.com/', icon: 'icon-brand-vk.svg' }],
+      halls: HALLS.map(h => ({ ...h, href: SCH + '?hall=' + h.id })),
+      toc: [
+        { t: 'Первое занятие', href: '#first' }, { t: 'Что взять', href: '#bring' }, { t: 'Безопасность', href: '#safety' },
+        { t: 'Наш подход', href: '#approach' }, { t: 'Вопросы', href: '#faq' }, { t: 'Документы', href: '#docs' }
+      ],
+      firstSteps: [
+        { n: '1', k: 'За 10 минут', t: 'Приходите заранее', d: `Успеете переодеться и${NB}спокойно познакомиться с${NB}залом`, bg: '#0A1E4B' },
+        { n: '2', k: 'На входе', t: 'Вас встречают', d: `Администратор или тренер проводит в${NB}зал и${NB}покажет раздевалку`, bg: '#0A1E4B' },
+        { n: '3', k: '10–15 минут', t: 'Разминка', d: `Разогреваем мышцы и${NB}суставы, знакомимся с${NB}группой`, bg: '#0A1E4B' },
+        { n: '4', k: 'Основная часть', t: 'Игры с мячом', d: `Тренер показывает упражнения и${NB}подстраивает их под${NB}новичка`, bg: '#0A1E4B' },
+        { n: '5', k: 'После', t: 'Разговор с тренером', d: `Расскажет, как всё прошло, и${NB}какая группа подойдёт`, bg: '#E71E2B' }
+      ],
+      bring: [
+        { n: '1', icon: 'icon-shirt.svg', t: 'Футболка', d: 'Любая удобная', rot: '-1.5deg' },
+        { n: '2', icon: 'icon-pants.svg', t: 'Шорты или леггинсы', d: 'Не стесняющие движений', rot: '1deg' },
+        { n: '3', icon: 'icon-footprints.svg', t: 'Кроссовки для зала', d: 'Со светлой подошвой', rot: '-.5deg' },
+        { n: '4', icon: 'icon-glass-water.svg', t: 'Бутылка воды', d: 'Лучше подписанная', rot: '1.5deg' },
+        { n: '5', icon: 'icon-shield-check.svg', t: 'Наколенники', d: `По${NB}желанию, уточнить у${NB}школы`, rot: '-1deg' },
+        { n: '6', icon: 'icon-smile.svg', t: 'Хорошее настроение', d: 'Остальное — у нас', rot: '.5deg' }
+      ],
+      safety: [
+        { icon: 'icon-flame.svg', t: 'Разминка перед каждой тренировкой', d: `Без неё к${NB}мячу не${NB}переходим.` },
+        { icon: 'icon-users.svg', t: 'Нагрузка по возрасту', d: `Младшие больше играют, старшие — больше тренируют технику` },
+        { icon: 'icon-hand-heart.svg', t: 'Если ребёнку тяжело', d: `Тренер снизит нагрузку или даст отдохнуть — терпеть через силу не${NB}нужно` }
+      ],
+      approach: [
+        { t: 'Новичку не нужно догонять', d: `Каждый работает на${NB}своём уровне. Тренер хвалит за${NB}прогресс, а${NB}не${NB}сравнивает с${NB}другими.` },
+        { t: 'Подготовленный не стоит на месте', d: `Для тех, кто уже умеет, — усложнённые упражнения и${NB}переход в${NB}следующую группу` },
+        { t: 'Интерес важнее результата', d: `Мы хотим, чтобы ребёнок любил спорт и${NB}приходил на${NB}тренировки с${NB}радостью` }
+      ],
+      faq: FAQ.map((q, i) => {
+        const open = this.state.faqOpen === i;
+        return { q, open, sign: open ? '−' : '+', icon: open ? 'icon-minus.svg' : 'icon-plus.svg', rowBg: open ? '#0A1E4B' : '#EEF2FA', fg: open ? '#fff' : '#0A1E4B',
+          toggle: () => this.setState(s => ({ faqOpen: s.faqOpen === i ? -1 : i })) };
+      }),
+      docs: [
+        { t: 'Для зачисления', d: `Понадобятся после пробного, если решите остаться`, items: ['Перечень документов', 'Заявление о приёме', 'Согласие законного представителя', 'Требования к медицинской справке'] },
+        { t: 'Оплата', d: `Условия абонементов, переносов и${NB}возврата`, items: ['Публичная оферта', 'Правила переноса и возврата'] },
+        { t: 'Персональные данные', d: `Как мы храним и${NB}используем данные`, items: ['Политика обработки данных', 'Согласие на обработку'] }
+      ],
+      open: () => this.setState({ modal: true }),
+      modal: this.state.modal, close: this.closeModal, stop: e => e.stopPropagation(),
+      fm: this.form()
+    };
+  }
+}
+</script>
+</body>
+</html>
